@@ -21,10 +21,10 @@
   <insert id="insertBoard"
           parameterType="BoardDto">
     <selectKey order="BEFORE" keyProperty="boardNo" resultType="int">
-      SELECT UPLOAD_SEQ.NEXTVAL
+      SELECT BOARD_SEQ.NEXTVAL
          FROM DUAL
     </selectKey>
-     INSERT INTO UPLOAD_T (
+     INSERT INTO BOARD_T (
           BOARD_NO
         , TITLE
         , CONTENTS
@@ -35,8 +35,8 @@
           #{boardNo}
         , #{title}
         , #{contents}
-        , TIMESTAMP
-        , TIMESTAMP 
+        , SYSTIMESTAMP
+        , SYSTIMESTAMP 
         , #{user.userNo}
       )
   </insert>

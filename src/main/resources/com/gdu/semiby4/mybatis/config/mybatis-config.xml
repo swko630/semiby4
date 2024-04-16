@@ -13,6 +13,9 @@
   <!-- typeAliases -->
   <typeAliases>
     <typeAlias alias="UserDto"          type="com.gdu.semiby4.dto.UserDto"/>
+    <typeAlias alias="AttachDto"          type="com.gdu.semiby4.dto.AttachDto"/>
+    <typeAlias alias="BoardDto"          type="com.gdu.semiby4.dto.BoardDto"/>
+    <typeAlias alias="CommentDto"          type="com.gdu.semiby4.dto.CommentDto"/>
   </typeAliases>
   
 </configuration>

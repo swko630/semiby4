@@ -50,10 +50,10 @@
  <h1 class="title">게시글 작성화면</h1>
  
  
- <form id="frm-upload-register"
+ <form id="frm-board-register"
        method="POST"
        enctype="multipart/form-data"
-       action = "${contextPath}/upload/register.do">
+       action = "${contextPath}/board/register.do">
        
  <div>
   <span>작성자</span>
@@ -79,7 +79,7 @@
  <div>
  <input type="hidden" name="userNo" value="${sessionScope.user.userNo}">
  <button type="submit">작성완료</button>
- <a href="${contextPath}/upload/list.do"><button type="button">작성취소</button></a>
+ <a href="${contextPath}/board/list.do"><button type="button">작성취소</button></a>
  </div>
  
  </form>
