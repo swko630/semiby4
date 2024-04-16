@@ -21,19 +21,16 @@ import org.springframework.stereotype.Service;
 
 import com.gdu.semiby4.dto.UserDto;
 import com.gdu.semiby4.mapper.UserMapper;
-import com.gdu.semiby4.utils.MyJavaMailUtils;
 import com.gdu.semiby4.utils.MySecurityUtils;
 
 @Service
 public class UserServiceImpl implements UserService {
 
   private final UserMapper userMapper;
-  private final MyJavaMailUtils myJavaMailUtils;
   
-  public UserServiceImpl(UserMapper userMapper, MyJavaMailUtils myJavaMailUtils) {
+  public UserServiceImpl(UserMapper userMapper) {
     super();
     this.userMapper = userMapper;
-    this.myJavaMailUtils = myJavaMailUtils;
   }
   
   @Override
