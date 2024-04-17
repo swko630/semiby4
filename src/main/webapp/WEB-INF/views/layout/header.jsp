@@ -58,7 +58,7 @@
     
     <div class="gnb-wrap">
       <ul class="gnb">
-        <li><a href="${contextPath}/board/list.do">게시판</a></li>
+        <li><a href="${contextPath}/listboard/list.do">게시판</a></li>
       </ul>
     </div>
 
