@@ -7,9 +7,9 @@
 
 <jsp:include page="../layout/header.jsp"/>
 
-<h1 class="title">업로드 목록</h1>
+<h1 class="title">게시판 목록</h1>
 
-<a href="${contextPath}/board/write.page">업로드작성</a>
+<a href="${contextPath}/board/write.page">게시물 작성</a>
 
 <div>
   <div>
