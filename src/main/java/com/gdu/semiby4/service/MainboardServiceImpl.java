@@ -3,7 +3,10 @@ package com.gdu.semiby4.service;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -100,7 +103,7 @@ public class MainboardServiceImpl implements MainboardService {
     return (insertUploadCount == 1) && (insertAttachCount == files.size());
     // 첨부파일이 없으면 사이즈가 = 1. 그래서 초기화값도 1
   }
-    
   
-
+  
+  
 }

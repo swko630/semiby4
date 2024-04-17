@@ -2,10 +2,7 @@ package com.gdu.semiby4.controller;
 
 
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +31,6 @@ public class MainboardController {
 	  redirectAttributes.addFlashAttribute("inserted", mainboardService.registerUpload(multipartRequest)); //count를 받아오는게 아니라 되었나 안되었나를 true/false로 받아옴
     return "redirect:/board/list.do";
   }
-  
+	
 	
 }

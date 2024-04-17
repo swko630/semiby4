@@ -19,10 +19,6 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
-<!-- include summernote css/js -->
-<link rel="stylesheet" href="${contextPath}/resources/summernote-0.8.18-dist/summernote.min.css">
-<script src="${contextPath}/resources/summernote-0.8.18-dist/summernote.min.js"></script>
-<script src="${contextPath}/resources/summernote-0.8.18-dist/lang/summernote-ko-KR.min.js"></script>
 <!-- cdn 변경 -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -31,12 +27,34 @@
 <body>
 
   <style>
+  #main-wrap{
+  }
   
   #title{
   width: 990px;
+  margin-left : 30px;
+  margin-bottom: 10px;
   }
-  #main-wrap{
-
+  
+  #contents{
+  width: 990px;
+  height: 400px;
+  margin-left : 30px;
+  }
+  
+  #files{
+  width: 300px;
+  margin-left : 30px;
+  }
+  
+  #writer{
+  width: 300px;
+  margin-left : 30px;
+  }
+  
+  #files-wrap{
+  margin-top : 20px;
+  margin-botton: 100px;
   }
   
   </style>
@@ -56,22 +74,22 @@
        action = "${contextPath}/board/register.do">
        
  <div>
-  <span>작성자</span>
-  <span>${sessionScope.user.email}</span>
+  <label for="writer">작성자</label>
+  <input type="text" class="form-control" id="writer" value="${sessionScope.user.email}" readonly>
  </div>
  
  <div>
   <label for="title">제목</label>
-  <input type="text" name="title" id="title">
+  <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력하세요">
  </div>      
  
  <div>
-  <textarea id="contents" name="contents" placeholder="내용을 입력하세요"></textarea>
+  <textarea id="contents" class="form-control" name="contents" placeholder="내용을 입력하세요"></textarea>
  </div>
  
- <div>
+ <div id="files-wrap">
   <label for="files">첨부</label>
-  <input type="file" name="files" id="files" multiple>
+  <input class="form-control" type="file" name="files" id="files" multiple>
  </div>
  
  <div id="attach-list">첨부파일목록</div>
@@ -87,30 +105,6 @@
 </div> 
  
 <script>
-
-$(document).ready(function(){  
-	  $('#contents').summernote({
-	    width: 1024,
-	    height: 500,
-	    lang:'ko-KR',
-	    callbacks: {
-	      onImageUpload: (images)=>{
-	        for(let i = 0; i < images.length; i++){
-	          let formData = new FormData();  
-	          formData.append('image',images[i]);
-	          fetch('${contextPath}/summernote/imageUpload.do', {
-	            method: 'POST',
-	            body: formData
-	        
-	          }).then(response=>response.json())
-	          .then(resData=>{
-	            $('#contents').summernote('insertImage', resData.src);
-	          });
-	        }
-	      }     
-	    }
-	  });
-	  })
 
 //제목 필수 입력 스크립트
 const fnRegisterUpload = () => {
