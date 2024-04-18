@@ -137,7 +137,9 @@
 <script>
 
 //제목 필수 입력 스크립트
-const fnRegisterUpload = () => {
+
+const fnRegisterBoard = () => {
+
   document.getElementById('frm-board-register').addEventListener('submit', (evt) => {
     if(document.getElementById('title').value === '') {
       alert('제목은 필수입니다.');
@@ -176,7 +178,7 @@ const fnAttachCheck = () => {
 }
 
 fnAttachCheck();
-fnRegisterUpload();
+fnRegisterBoard();
 </script>
  
 

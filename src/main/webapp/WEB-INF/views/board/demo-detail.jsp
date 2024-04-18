@@ -18,41 +18,124 @@
   <script src="${contextPath}/resources/moment/moment-with-locales.min.js"></script>
 
   <title>상세화면</title>
+
 </head>
 <body>
 
-<div>
-  <span>작성자</span>
-  <span>${board.user.email}</span>
+<style>
+
+ #main-wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  
+  #title{
+  width: 990px;
+  margin-left : 30px;
+  margin-bottom: 10px;
+  }
+  
+  #board-title{
+  margin-left: 30px;
+  width: 990px;
+  }
+  
+  #writer{
+  margin-left : 30px;
+  width: 250px;
+  }  
+  #create-dt{
+  margin-left : 30px;
+  width: 250px;
+  }
+  
+  #contents{
+  width: 990px;
+  height: 400px;
+  margin-left : 30px;
+  }
+  
+  #comment-contents{
+  width: 850px;
+  }
+  
+  input{
+   background-color: beige;
+  }
+  
+  hr{
+    border: 2px solid black;
+  }
+  
+  button{
+    margin-top: 10px;
+   }
+  
+
+
+</style>
+
+ <div>
+ <a href="${contextPath}/main.page"> 메인으로 돌아가기 </a>
+ </div>
+ 
+<div id="main-wrap">
+
+ 
+ <div id="title">
+ <h1 class="title">상세화면</h1>
+ <hr>
+ </div>
+
+  <div>
+  
+  <div>
+  <input type="text" class="form-control" id="board-title" value="${board.title}" readonly>
+  </div>
+  
+  <div>
+  <label for="writer" ></label>
+  <input type="text" class="form-control" id="writer" value="${board.user.email}" readonly>
+  </div>
+  
+  <div>
+  <input type="text" class="form-control" id="create-dt" value="${board.createDt}" readonly>
+  </div>
+
+  <div>
+  <label for="contents" ></label>
+  <input type="text" class="form-control" id="contents" value="${board.contents}" readonly>
+  </div>
+ 
+ </div>
+
+
+
+  <hr>
+  
+  <div id="frm-comment">
+  <form id="frm-comment">
+    <textarea id="comment-contents" class="form-control" name="contents"></textarea>
+    <input type="hidden" name="boardNo" value="${board.boardNo}">
+    <c:if test="${not empty sessionScope.user}">  
+      <input type="hidden" name="userNo" value="${sessionScope.user.userNo}">
+    </c:if>
+    <button type="button" id="btn-comment-register">댓글등록</button>
+  </form>
+  </div>
+  
+  
+  <div id="comment-list"></div>
+  <div id="paging"></div>
+  
+
+
+
 </div>
-
-<div>
-  <span>제목</span>
-  <span>${board.hit}</span>
-</div>
-
-<div>
-  <span>내용</span>
-  <span>${board.contents}</span>
-</div>
-
-<hr>
-
-<form id="frm-comment">
-  <textarea id="contents" name="contents"></textarea>
-  <input type="hidden" name="boardNo" value="${board.boardNo}">
-  <c:if test="${not empty sessionScope.user}">  
-    <input type="hidden" name="userNo" value="${sessionScope.user.userNo}">
-  </c:if>
-  <button type="button" id="btn-comment-register">댓글등록</button>
-</form>
-
-<hr>
-
-<div id="comment-list"></div>
-<div id="paging"></div>
 
 <script>
+
 
 
 const fnCheckSignin = () => {
@@ -70,10 +153,10 @@ const fnRegisterComment = () => {
       // 요청
       type: 'POST',
       url: '${contextPath}/board/registerComment.do',
-      data: $('#frm-comment').serialize(),  // <form> 내부의 모든 입력을 파라미터 형식으로 보낼 때 사용, 입력 요소들은 name 속성을 가지고 있어야 함
+      data: $('#frm-comment').serialize(),  
       // 응답
       dataType: 'json',
-      success: (resData) => {  // resData = {"insertCount": 1}
+      success: (resData) => {  
         if(resData.insertCount === 1) {
           alert('댓글이 등록되었습니다.');
           $('#contents').val('');
@@ -99,7 +182,7 @@ const fnCommentList = () => {
     url: '${contextPath}/board/comment/list.do',
     data: 'boardNo=${board.boardNo}&page=' + page,
     dataType: 'json',
-    success: (resData) => {  // resData = {"commentList": [], "paging": "< 1 2 3 4 5 >"}
+    success: (resData) => {  
     console.log(resData.commentList); 
     let commentList = $('#comment-list');
       let paging = $('#paging');
@@ -138,7 +221,7 @@ const fnCommentList = () => {
            str += '<div>';
            str +=   '<form class="frm-reply">';
            str +=     '<input type="hidden" name="groupNo" value="' + comment.groupNo + '">';
-           str +=     '<input type="hidden" name="boardNo" value="${board.boardNo}">';  // 상세보기 blogNo
+           str +=     '<input type="hidden" name="boardNo" value="${board.boardNo}">';  
            str +=     '<input type="hidden" name="userNo" value ="${sessionScope.user.userNo}">'; 
            str +=     '<textarea name="contents" placeholder="답글 입력"></textarea>';
            str +=     '<button type="button" class="btn btn-warning btn-register-reply">작성완료</button>';
