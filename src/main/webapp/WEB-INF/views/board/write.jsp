@@ -28,7 +28,11 @@
 
   <style>
   #main-wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   }
+  
   
   #title{
   width: 990px;
@@ -57,15 +61,40 @@
   margin-botton: 100px;
   }
   
+  hr {
+    border: 2px solid black;
+}
+
+  label {
+    padding-left: 25px;
+    margin-top: 20px;
+  }
+  
+  #buttons {
+    margin-left: 25px;
+    margin-top: 10px;
+  }
+  
+  #file-list {
+    width: 300px;
+    margin-left : 30px;
+  }
+  
   </style>
+  
 
 
-     <div class="gnb-wrap">
-               <a href="${contextPath}/main.page"> 메인으로 돌아가기 </a>
-     </div>
+
+ <div class="gnb-wrap">
+ 
+ <a href="${contextPath}/main.page"> 메인으로 돌아가기 </a>
+ </div>
      
  <div id="main-wrap">
- <h1 class="title">게시글 작성화면</h1>
+ <div id="title">
+ <h1 class="title">글작성</h1>
+ <hr>
+ </div>
  
  
  <form id="frm-board-register"
@@ -74,7 +103,7 @@
        action = "${contextPath}/board/register.do">
        
  <div>
-  <label for="writer">작성자</label>
+  <label for="writer" >작성자</label>
   <input type="text" class="form-control" id="writer" value="${sessionScope.user.email}" readonly>
  </div>
  
@@ -92,9 +121,10 @@
   <input class="form-control" type="file" name="files" id="files" multiple>
  </div>
  
- <div id="attach-list">첨부파일목록</div>
+ <label for="attach-list">첨부파일목록</label>
+ <div id="attach-list"></div>
  
- <div>
+ <div id="buttons">
  <input type="hidden" name="userNo" value="${sessionScope.user.userNo}">
  <button type="submit">작성완료</button>
  <a href="${contextPath}/board/list.do"><button type="button">작성취소</button></a>
@@ -140,7 +170,7 @@ const fnAttachCheck = () => {
         attachList.innerHTML = '';
         return;
       }
-      attachList.innerHTML += '<div>' + files[i].name + '</div>';
+      attachList.innerHTML += '<input type="text" class="form-control" id="file-list" value="'+ files[i].name + '" >';
     }
   })
 }
