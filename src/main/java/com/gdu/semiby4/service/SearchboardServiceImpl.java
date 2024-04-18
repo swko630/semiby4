@@ -40,13 +40,6 @@ public class SearchboardServiceImpl implements SearchboardService {
     int page = Integer.parseInt(opt.orElse("1"));
     
     myPageUtils.setPaging(total, display, page);
-    
-    map.put("begin", myPageUtils.getBegin());
-    
-    
-    
-    
-    
   }
 
 }

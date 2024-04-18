@@ -40,38 +40,10 @@
       , CURRENT_DATE
     )
   </insert>
-  
-  <select id="getSearchCount"
-          parameterType="Map"
-          resultType="int">
-      SELECT COUNT(*)    
-        FROM USER_T U INNER JOIN BOARD_T B
-          ON U.USER_NO = B.BOARD_NO 
-        WHERE ${column} LIKE '%' || #{query} || '%'
-  </select>
-  
-  <select id="getSearchList"
-          parameterType="Map"
-          resultMap="BoardMap">          
-    SELECT BOARD_NO, USER_NO, TITLE, CONTENTS, HIT, CREATE_DT, MODIFY_DT
-      FROM (SELECT ROW_NUMBER() OVER(ORDER BY BOARD_NO DESC, USER_NO ASC) AS RN, B.BOARD_NO, B.CONTENTS, U.USER_NO, U.EMAIL, B.CREATE_DT, B.HIT, B.TITLE
-              FROM USER_T U INNER JOIN BOARD_T B
-                ON U.USER_NO = B.USER_NO
-             WHERE ${column} LIKE CONCAT(CONCAT('%', #{query}), '%'))
-     WHERE RN BETWEEN #{begin} AND #{end}
-  </select>
-  
-  
-  
-  
 
   <delete id="deleteUser">
     DELETE
       FROM USER_T
      WHERE USER_NO = #{userNo}
   </delete>
-  
-  
-  
-
 </mapper>

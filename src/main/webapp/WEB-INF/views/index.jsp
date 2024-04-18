@@ -14,17 +14,14 @@
         action="${contextPath}/board/search.do">
     <div>
       <select name="column">
-        <option value="">작성자</option>
-        <option value="">내용</option>
+        <option value="U.EMPLOYEE_ID">작성자</option>
+        <option value="B.CONTENTS">내용</option>
       </select>
       <input type="text" name="query" placeholder="검색어 입력">
       <button type="submit">검색</button>
-    </div>      
-        
-        
-        
+    </div>
+  </form>
 </div>
-  
 
 
 <h3>테스트 가능한 사용자 리스트</h3>
