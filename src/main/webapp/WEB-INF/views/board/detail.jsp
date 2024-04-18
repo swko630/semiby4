@@ -8,8 +8,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>상세화면</title>
+  <meta charset="UTF-8">
+
+  <!-- include libraries(jquery, bootstrap) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+  <!-- include moment.js -->
+  <script src="${contextPath}/resources/moment/moment-with-locales.min.js"></script>
+
+  <title>상세화면</title>
 </head>
 <body>
 
@@ -46,7 +54,7 @@
 
 <script>
 
-/*
+
 const fnCheckSignin = () => {
   if('${sessionScope.user}' === '') {
     if(confirm('Sign In 이 필요한 기능입니다. Sign In 할까요?')) {
@@ -54,7 +62,7 @@ const fnCheckSignin = () => {
     }
   }
 }
-*/
+
 const fnRegisterComment = () => {    
   $('#btn-comment-register').on('click', (evt) => {
     fnCheckSignin();
@@ -89,7 +97,7 @@ const fnCommentList = () => {
   $.ajax({
     type: 'get',
     url: '${contextPath}/board/comment/list.do',
-    data: 'blogNo=${board.boardNo}&page=' + page,
+    data: 'boardNo=${board.boardNo}&page=' + page,
     dataType: 'json',
     success: (resData) => {  // resData = {"commentList": [], "paging": "< 1 2 3 4 5 >"}
     console.log(resData.commentList); 

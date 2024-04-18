@@ -14,8 +14,7 @@ import com.gdu.semiby4.dto.UserDto;
 @Data
 @Builder
 public class BoardDto {
-  private int attachCount;
-	int boardNo, hit;
+	int boardNo, hit, attachCount;
 	String title, contents;
 	Timestamp createDt, modifyDt;
 	UserDto user;
