@@ -9,6 +9,24 @@
 
 <h1>PROJECT SEMIBY4</h1>
 
+<div>
+  <form method="GET"
+        action="${contextPath}/board/search.do">
+    <div>
+      <select name="column">
+        <option value="">작성자</option>
+        <option value="">내용</option>
+      </select>
+      <input type="text" name="query" placeholder="검색어 입력">
+      <button type="submit">검색</button>
+    </div>      
+        
+        
+        
+</div>
+  
+
+
 <h3>테스트 가능한 사용자 리스트</h3>
 <h5>id: admin, pw: admin</h5>
 <h5>id: tester1, pw: 1111</h5>
@@ -17,5 +35,7 @@
 <h5>id: tester4, pw: 4444</h5>
 <h5>id: tester5, pw: 5555</h5>
 <h5>id: tester6, pw: 6666</h5>
+
+
   
 <%@ include file="./layout/footer.jsp" %>
