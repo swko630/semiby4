@@ -10,5 +10,6 @@ public interface ListboardService {
   void boardList(Model model);
   void boardListByNo(int boardNo, Model model);
   Map<String, Object> getAttachList(int boardNo);
+  int updateHit(int boardNo);
   
 }

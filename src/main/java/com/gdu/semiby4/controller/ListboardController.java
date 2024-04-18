@@ -36,6 +36,12 @@ public class ListboardController {
     Map<String, Object> attachList = listboardService.getAttachList(boardNo);
     return new ResponseEntity<>(attachList, HttpStatus.OK);
   }
+  
+  @GetMapping("/updateHit.do")
+  public String updateHit(@RequestParam int boardNo) {
+    listboardService.updateHit(boardNo);
+    return "redirect:/board/detail.do?boardNo=" + boardNo;
+  }
 }
 
 

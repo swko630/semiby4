@@ -29,6 +29,9 @@
     <label for="descending">내림차순</label>
     <input type="radio" name="sort" value="ASC" id="ascending">
     <label for="ascending">오름차순</label>
+    <input type="radio" name="sort" value="VIEW_COUNT_DESC" id="viewDescending">
+  <label for="viewDescending">조회수순</label>
+</div>
   </div>
   <div>
     <select id="display" name="display">
@@ -43,7 +46,7 @@
         <td>순번</td>
         <td>제목</td>
         <td>작성자</td>
-        <td>첨부개수</td>
+        <td>조회수</td>
       </tr>
     </thead>
     <tbody>
@@ -54,7 +57,7 @@
             <a id="bold" href="${contextPath}/board/detail.do?boardNo=${board.boardNo}">${board.title}</a>
           </td>
           <td>${board.user.email}</td>
-          <td>${board.attachCount}</td>
+          <td>${board.hit}</td>
         </tr>
       </c:forEach>
     </tbody>
@@ -76,11 +79,14 @@ const fnDisplay = () => {
 }
 
 const fnSort = () => {
-  $(':radio[value=${sort}]').prop('checked', true);
-  $(':radio').on('click', (evt) => {
-    location.href = '${contextPath}/board/list.do?page=1&sort=' + evt.target.value + '&display=${display}';
-  })
-}
+    $(':radio[value=${sort}]').prop('checked', true);
+    $(':radio').on('click', (evt) => {
+      let sortValue = evt.target.value;
+      let displayValue = document.getElementById('display').value;
+      let url = '${contextPath}/board/list.do?page=1&sort=' + sortValue + '&display=' + displayValue;
+      location.href = url;
+    });
+};
 
 
 fnDisplay();
