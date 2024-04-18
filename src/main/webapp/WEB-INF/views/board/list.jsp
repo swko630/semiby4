@@ -7,6 +7,18 @@
 
 <jsp:include page="../layout/header.jsp"/>
 
+<style>
+  .contents {
+    width: 500px;
+  }
+  
+  #bold:hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
+</style>
+
+
 <h1 class="title">게시판 목록</h1>
 
 <a href="${contextPath}/board/write.page">게시물 작성</a>
@@ -38,8 +50,8 @@
       <c:forEach items="${boardList}" var="board" varStatus="vs">
         <tr>
           <td>${beginNo - vs.index}</td>
-          <td>
-            <a href="${contextPath}/board/detail.do?boardNo=${board.boardNo}">${board.title}</a>
+          <td class="contents">
+            <a id="bold" href="${contextPath}/board/detail.do?boardNo=${board.boardNo}">${board.title}</a>
           </td>
           <td>${board.user.email}</td>
           <td>${board.attachCount}</td>
