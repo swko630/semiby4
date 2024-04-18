@@ -65,4 +65,10 @@ public class ListboardServiceImpl implements ListboardService {
   public Map<String, Object> getAttachList(int boardNo) {
       return Map.of("attachList", listboardMapper.getAttachList(boardNo));
   }
+  
+  @Override
+  public int updateHit(int boardNo) {
+    return listboardMapper.updateHit(boardNo);
+  }
+  
 }

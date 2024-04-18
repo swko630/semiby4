@@ -15,5 +15,6 @@ public interface ListboardMapper {
   List<BoardDto> getBoardList(Map<String, Object> map);
   BoardDto getBoardByNo(int boardNo);
   List<AttachDto> getAttachList(int uploadNo);
+  int updateHit(int boardNo);
   
 }

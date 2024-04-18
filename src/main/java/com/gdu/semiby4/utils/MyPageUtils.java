@@ -14,7 +14,7 @@ public class MyPageUtils {
   private int begin;     // 한 페이지에 표시할 게시글의 시작 번호 (계산한다.)
   private int end;       // 한 페이지에 표시할 게시글의 종료 번호 (계산한다.)
 
-  private int pagePerBlock = 10;  // 한 블록에 표시할 페이지 링크의 개수      (임의로 결정한다.)
+  private int pagePerBlock = 20;  // 한 블록에 표시할 페이지 링크의 개수      (임의로 결정한다.)
   private int totalPage;          // 전체 페이지 개수                         (계산한다.)
   private int beginPage;          // 한 블록에 표시할 페이지 링크의 시작 번호 (계산한다.)
   private int endPage;            // 한 블록에 표시할 페이지 링크의 종료 번호 (계산한다.)
