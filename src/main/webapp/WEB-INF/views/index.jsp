@@ -33,6 +33,11 @@
 <h5>id: tester5, pw: 5555</h5>
 <h5>id: tester6, pw: 6666</h5>
 
+<a href="${contextPath}/calendar/calendar.do">일정관리</a>
+
+
+
+
 
   
 <%@ include file="./layout/footer.jsp" %>

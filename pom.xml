@@ -70,6 +70,14 @@
       <artifactId>json</artifactId>
       <version>20240303</version>
     </dependency>
+    
+    <!-- fullcalendar 의 JSON 반환 객체를 받아서 로그 찍기 위한 json 라이브러리 -->
+    <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+    <dependency>
+        <groupId>com.googlecode.json-simple</groupId>
+        <artifactId>json-simple</artifactId>
+        <version>1.1.1</version>
+    </dependency>
 
 
 
